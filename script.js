@@ -3,9 +3,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const countdownContainer = document.getElementById('countdown-container');
     const cardContainer = document.getElementById('card-container');
     const confettiContainer = document.querySelector('.confetti-container');
+    const activitiesContainer = document.getElementById('activities-container');
+    const quizQuestion = document.getElementById('quiz-question');
+    const quizOptions = document.getElementById('quiz-options');
+    const quizResult = document.getElementById('quiz-result');
+    const postcardText = document.getElementById('postcard-text');
+    const createPostcardBtn = document.getElementById('create-postcard');
+    const postcardPreview = document.getElementById('postcard-preview');
 
-    // Set the birthday date to September 18, 2025
-    const birthdayDate = new Date('September 17, 2025 00:00:00').getTime();
+    const birthdayDate = new Date('September 18, 2025 00:00:00').getTime();
 
     function updateCountdown() {
         const now = new Date().getTime();
@@ -30,18 +36,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const countdownInterval = setInterval(updateCountdown, 1000);
 
-    // Initial check in case the birthday is already passed
     updateCountdown();
 
     function revealSurprise() {
-        document.body.style.backgroundColor = '#8b0000'; // Darker burgundy on reveal
+        document.body.style.backgroundColor = '#8b0000';
         document.title = 'Happy Birthday, Simi!';
         cardContainer.style.display = 'block';
         setTimeout(() => {
             cardContainer.classList.add('visible');
+            startConfetti();
+            startFloatingIcons();
         }, 100);
-        startConfetti();
-        startFloatingIcons(); // New function call
+
+        // Reveal activities section after a delay
+        setTimeout(() => {
+            activitiesContainer.style.display = 'block';
+            setTimeout(() => activitiesContainer.classList.add('visible'), 50);
+        }, 4000);
     }
 
     function startConfetti() {
@@ -57,8 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
             confettiContainer.appendChild(confetti);
         }
     }
-
-    // New function to start the floating icons animation
+    
     function startFloatingIcons() {
         const icons = ['✈️', '📸', '🎈', '🧭', '🎉'];
         for (let i = 0; i < 20; i++) {
@@ -72,6 +82,69 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Friendship Quiz Logic
+    const quizQuestions = [
+        {
+            question: "What is the best way to cheer me up when I'm down?",
+            options: ["A funny meme", "A long conversation", "A short voice note", "A video of a cat"],
+            answer: "A long conversation"
+        },
+        {
+            question: "If we could travel anywhere, where would we go first?",
+            options: ["Switzerland's mountains", "A historical city in Europe", "A beach in Bali", "A safari in Africa"],
+            answer: "A historical city in Europe"
+        }
+    ];
+    let currentQuestionIndex = 0;
+    let score = 0;
+
+    function displayQuizQuestion() {
+        if (currentQuestionIndex < quizQuestions.length) {
+            const currentQuestion = quizQuestions[currentQuestionIndex];
+            quizQuestion.textContent = currentQuestion.question;
+            quizOptions.innerHTML = '';
+            currentQuestion.options.forEach(option => {
+                const button = document.createElement('button');
+                button.textContent = option;
+                button.addEventListener('click', () => checkAnswer(option, currentQuestion.answer));
+                quizOptions.appendChild(button);
+            });
+        } else {
+            quizResult.textContent = `Quiz complete! Your score: ${score} out of ${quizQuestions.length}.`;
+            quizOptions.innerHTML = '';
+        }
+    }
+
+    function checkAnswer(selected, correct) {
+        if (selected === correct) {
+            score++;
+            quizResult.textContent = 'Correct!';
+        } else {
+            quizResult.textContent = 'Not quite! The answer was: ' + correct;
+        }
+        currentQuestionIndex++;
+        setTimeout(() => {
+            quizResult.textContent = '';
+            displayQuizQuestion();
+        }, 1500);
+    }
+    displayQuizQuestion();
+
+    // Digital Postcard Logic
+    const postcardImages = [
+        'url(https://source.unsplash.com/random/800x600/?mountains,nature)',
+        'url(https://source.unsplash.com/random/800x600/?travel,landscape)',
+        'url(https://source.unsplash.com/random/800x600/?city,sunset)'
+    ];
+
+    createPostcardBtn.addEventListener('click', () => {
+        const message = postcardText.value;
+        const randomImage = postcardImages[Math.floor(Math.random() * postcardImages.length)];
+        postcardPreview.style.backgroundImage = randomImage;
+        postcardPreview.innerHTML = `<p>${message}</p>`;
+        postcardPreview.style.display = 'block';
+    });
+    
     // Optional: Auto-show card if the date has passed
     if (new Date().getTime() >= birthdayDate) {
         countdownContainer.style.display = 'none';
