@@ -1,197 +1,54 @@
-body {
-    background-color: #0d0d0d;
-    color: #fff;
-    font-family: 'Poppins', sans-serif; /* Modern font */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    overflow-x: hidden;
-    position: relative;
-    transition: background-color 1.5s ease;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Surprise for Simi!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-h1, h2, h3 {
-    font-weight: 600;
-}
+    <div class="countdown-container" id="countdown-container">
+        <h1>A Birthday Surprise for Simi...</h1>
+        <div id="countdown" class="countdown"></div>
+    </div>
 
-.countdown-container {
-    text-align: center;
-    transition: opacity 1s ease;
-    padding: 20px;
-}
+    <div class="card-container" id="card-container">
+        <div class="photo-card" id="photo-card">
+            <div class="photo-wrapper">
+                <img src="49C90649-833C-4BD0-BE28-DBB6D7D584CA.jpg" alt="Simi" class="animated-photo">
+            </div>
+            <div class="message-box">
+                <p>Happy Birthday, Simi!</p>
+                <p class="personal-message">
+                    You're the closest to my heart and always cheer me up. Even though we haven't met,
+                    your friendship means the world to me. I hope you have an amazing day!
+                </p>
+                <p class="signature">- [Your Name]</p>
+            </div>
+        </div>
+        <div class="confetti-container"></div>
+    </div>
 
-.countdown-container h1 {
-    color: #f0f0f0;
-    font-size: 3em;
-    font-weight: 300;
-}
+    <div class="activities-container" id="activities-container">
+        <h2>Let's Celebrate with Some Fun!</h2>
+        
+        <div class="activity-box">
+            <h3>Friendship Quiz</h3>
+            <div id="quiz-question" class="quiz-question"></div>
+            <div id="quiz-options" class="quiz-options"></div>
+            <div id="quiz-result" class="quiz-result"></div>
+        </div>
 
-.countdown {
-    font-size: 5em;
-    letter-spacing: 5px;
-    font-weight: 700;
-    color: #c8a2c8;
-    text-shadow: 0 0 15px #c8a2c8;
-}
+        <div class="activity-box">
+            <h3>Digital Postcard</h3>
+            <p>Write a message and see it on a virtual postcard!</p>
+            <textarea id="postcard-text" placeholder="Type your message here..."></textarea>
+            <button id="create-postcard">Create Postcard</button>
+            <div id="postcard-preview" class="postcard-preview"></div>
+        </div>
+    </div>
 
-.hidden {
-    display: none;
-    opacity: 0;
-}
-
-.card-container, .activities-container {
-    display: none;
-    opacity: 0;
-    transform: scale(0.8);
-    transition: opacity 2s ease, transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-    position: relative;
-    z-index: 10;
-    text-align: center;
-    width: 90%;
-    max-width: 800px;
-}
-
-.visible {
-    display: block;
-    opacity: 1;
-    transform: scale(1);
-}
-
-.photo-card {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    padding: 40px 20px;
-    border: 2px solid #8b0000;
-    box-shadow: 0 0 30px rgba(139, 0, 0, 0.5);
-    margin-bottom: 40px;
-}
-
-.photo-wrapper {
-    position: relative;
-    width: 200px;
-    height: 200px;
-    overflow: hidden;
-    border-radius: 50%;
-    margin: 0 auto 20px;
-    border: 5px solid #c8a2c8;
-    animation: photo-pulse 2s infinite alternate;
-}
-
-.animated-photo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-.message-box p {
-    font-size: 1.2em;
-    line-height: 1.6;
-    color: #eee;
-    font-weight: 300;
-}
-
-.signature {
-    font-style: italic;
-    color: #c8a2c8;
-    margin-top: 15px;
-}
-
-@keyframes photo-pulse {
-    from { box-shadow: 0 0 10px #c8a2c8, 0 0 20px #8b0000; }
-    to { box-shadow: 0 0 20px #c8a2c8, 0 0 30px #8b0000; }
-}
-
-/* New Activities Section */
-.activities-container {
-    margin-top: 40px;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    padding: 20px;
-    border: 2px solid #c8a2c8;
-    box-shadow: 0 0 30px rgba(200, 162, 200, 0.5);
-}
-
-.activity-box {
-    padding: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    margin-bottom: 20px;
-}
-
-.quiz-options button {
-    background-color: transparent;
-    border: 2px solid #c8a2c8;
-    color: #c8a2c8;
-    padding: 10px 20px;
-    margin: 5px;
-    border-radius: 50px;
-    cursor: pointer;
-    font-size: 1em;
-    transition: all 0.3s ease;
-}
-
-.quiz-options button:hover {
-    background-color: #c8a2c8;
-    color: #0d0d0d;
-}
-
-.quiz-options button.correct {
-    background-color: #8b0000;
-    color: white;
-    border-color: #8b0000;
-}
-
-.quiz-options button.incorrect {
-    background-color: transparent;
-    color: #8b0000;
-    border-color: #8b0000;
-}
-
-#postcard-text {
-    width: 80%;
-    height: 100px;
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid #c8a2c8;
-    color: #eee;
-    padding: 10px;
-    border-radius: 5px;
-    resize: none;
-    font-family: inherit;
-}
-
-#create-postcard {
-    background-color: #8b0000;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 50px;
-    cursor: pointer;
-    margin-top: 10px;
-    font-size: 1em;
-    transition: background-color 0.3s ease;
-}
-
-#create-postcard:hover {
-    background-color: #6b0000;
-}
-
-.postcard-preview {
-    width: 100%;
-    min-height: 200px;
-    margin-top: 20px;
-    border-radius: 10px;
-    border: 1px solid #8b0000;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    padding: 20px;
-    font-style: italic;
-    color: #fff;
-    text-shadow: 1px 1px 2px #000;
-}
+    <script src="script.js"></script>
+</body>
+</html>
