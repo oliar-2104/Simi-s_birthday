@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const confettiContainer = document.querySelector('.confetti-container');
 
     // Set the birthday date to September 18, 2025
-    const birthdayDate = new Date('September 17, 2025 18:00:00').getTime();
+    const birthdayDate = new Date('September 18, 2025 00:00:00').getTime();
 
     function updateCountdown() {
         const now = new Date().getTime();
@@ -16,10 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
             countdownContainer.style.opacity = '0';
             setTimeout(() => {
                 countdownContainer.style.display = 'none';
-                document.body.style.backgroundColor = '#8b0000'; // Darker burgundy on reveal
-                document.title = 'Happy Birthday, Simi!';
-                showBirthdayCard();
-                startConfetti();
+                revealSurprise();
             }, 1000);
         } else {
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -36,11 +33,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial check in case the birthday is already passed
     updateCountdown();
 
-    function showBirthdayCard() {
+    function revealSurprise() {
+        document.body.style.backgroundColor = '#8b0000'; // Darker burgundy on reveal
+        document.title = 'Happy Birthday, Simi!';
         cardContainer.style.display = 'block';
         setTimeout(() => {
             cardContainer.classList.add('visible');
         }, 100);
+        startConfetti();
+        startFloatingIcons(); // New function call
     }
 
     function startConfetti() {
@@ -57,12 +58,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // New function to start the floating icons animation
+    function startFloatingIcons() {
+        const icons = ['✈️', '📸', '🎈', '🧭', '🎉'];
+        for (let i = 0; i < 20; i++) {
+            const icon = document.createElement('div');
+            icon.classList.add('floating-icon');
+            icon.textContent = icons[Math.floor(Math.random() * icons.length)];
+            icon.style.left = `${Math.random() * 100}vw`;
+            icon.style.animationDuration = `${Math.random() * 8 + 5}s`;
+            icon.style.animationDelay = `${Math.random() * 3}s`;
+            document.body.appendChild(icon);
+        }
+    }
+
     // Optional: Auto-show card if the date has passed
     if (new Date().getTime() >= birthdayDate) {
         countdownContainer.style.display = 'none';
-        document.body.style.backgroundColor = '#8b0000';
-        document.title = 'Happy Birthday, Simi!';
-        showBirthdayCard();
-        startConfetti();
+        revealSurprise();
     }
 });
