@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainContainer = document.getElementById('main-container');
     const confettiContainer = document.querySelector('.confetti-container');
 
-    const birthdayDate = new Date('September 17, 2025 00:00:00').getTime();
+    const birthdayDate = new Date('September 18, 2025 00:00:00').getTime();
 
     // Main countdown loop
     function updateCountdown() {
