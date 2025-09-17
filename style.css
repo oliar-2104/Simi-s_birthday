@@ -1,34 +1,39 @@
 body {
-    background: #111;
+    background-color: #0d0d0d;
     color: #fff;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', sans-serif; /* Modern font */
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    overflow: hidden;
+    overflow-x: hidden;
     position: relative;
-    background-color: #3e0622; /* A dark burgundy */
     transition: background-color 1.5s ease;
+}
+
+h1, h2, h3 {
+    font-weight: 600;
 }
 
 .countdown-container {
     text-align: center;
     transition: opacity 1s ease;
+    padding: 20px;
 }
 
 .countdown-container h1 {
-    color: #f7e0e8;
+    color: #f0f0f0;
     font-size: 3em;
     font-weight: 300;
 }
 
 .countdown {
-    font-size: 4em;
+    font-size: 5em;
     letter-spacing: 5px;
-    font-weight: bold;
-    color: #c8a2c8; /* A light lavender */
+    font-weight: 700;
+    color: #c8a2c8;
     text-shadow: 0 0 15px #c8a2c8;
 }
 
@@ -37,14 +42,16 @@ body {
     opacity: 0;
 }
 
-.card-container {
+.card-container, .activities-container {
     display: none;
     opacity: 0;
-    transform: scale(0.5);
+    transform: scale(0.8);
     transition: opacity 2s ease, transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
     position: relative;
     z-index: 10;
     text-align: center;
+    width: 90%;
+    max-width: 800px;
 }
 
 .visible {
@@ -54,18 +61,19 @@ body {
 }
 
 .photo-card {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
     border-radius: 20px;
-    padding: 20px;
+    padding: 40px 20px;
     border: 2px solid #8b0000;
-    box-shadow: 0 0 30px #8b0000;
+    box-shadow: 0 0 30px rgba(139, 0, 0, 0.5);
+    margin-bottom: 40px;
 }
 
 .photo-wrapper {
     position: relative;
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
     overflow: hidden;
     border-radius: 50%;
     margin: 0 auto 20px;
@@ -80,14 +88,11 @@ body {
     display: block;
 }
 
-.message-box {
-    margin-top: 20px;
-}
-
-.personal-message {
+.message-box p {
     font-size: 1.2em;
     line-height: 1.6;
     color: #eee;
+    font-weight: 300;
 }
 
 .signature {
@@ -97,55 +102,96 @@ body {
 }
 
 @keyframes photo-pulse {
-    from {
-        box-shadow: 0 0 10px #c8a2c8, 0 0 20px #8b0000;
-    }
-    to {
-        box-shadow: 0 0 20px #c8a2c8, 0 0 30px #8b0000;
-    }
+    from { box-shadow: 0 0 10px #c8a2c8, 0 0 20px #8b0000; }
+    to { box-shadow: 0 0 20px #c8a2c8, 0 0 30px #8b0000; }
 }
 
-/* Confetti Animation */
-.confetti-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 5;
+/* New Activities Section */
+.activities-container {
+    margin-top: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 20px;
+    border: 2px solid #c8a2c8;
+    box-shadow: 0 0 30px rgba(200, 162, 200, 0.5);
 }
 
-.confetti {
-    width: 10px;
-    height: 10px;
+.activity-box {
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.quiz-options button {
+    background-color: transparent;
+    border: 2px solid #c8a2c8;
+    color: #c8a2c8;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: all 0.3s ease;
+}
+
+.quiz-options button:hover {
     background-color: #c8a2c8;
-    position: absolute;
-    animation: confetti-fall 5s linear infinite;
+    color: #0d0d0d;
 }
 
-@keyframes confetti-fall {
-    0% { transform: translateY(-100px) rotateZ(0deg); opacity: 0; }
-    10% { opacity: 1; }
-    100% { transform: translateY(100vh) rotateZ(720deg); opacity: 0; }
+.quiz-options button.correct {
+    background-color: #8b0000;
+    color: white;
+    border-color: #8b0000;
 }
 
-.confetti:nth-child(2n) { background-color: #8b0000; }
-.confetti:nth-child(3n) { background-color: #a2c8a2; }
-.confetti:nth-child(4n) { transform: translateY(-100px) rotateZ(45deg); animation-delay: 1s; }
-.confetti:nth-child(5n) { background-color: #c8a2c8; animation-delay: 2s; }
-
-/* New Floating Icons Animation */
-.floating-icon {
-    position: absolute;
-    font-size: 2em;
-    opacity: 0;
-    animation: float-up linear infinite;
-    z-index: 1;
+.quiz-options button.incorrect {
+    background-color: transparent;
+    color: #8b0000;
+    border-color: #8b0000;
 }
 
-@keyframes float-up {
-    0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
-    50% { opacity: 1; }
-    100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+#postcard-text {
+    width: 80%;
+    height: 100px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid #c8a2c8;
+    color: #eee;
+    padding: 10px;
+    border-radius: 5px;
+    resize: none;
+    font-family: inherit;
+}
+
+#create-postcard {
+    background-color: #8b0000;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+#create-postcard:hover {
+    background-color: #6b0000;
+}
+
+.postcard-preview {
+    width: 100%;
+    min-height: 200px;
+    margin-top: 20px;
+    border-radius: 10px;
+    border: 1px solid #8b0000;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    padding: 20px;
+    font-style: italic;
+    color: #fff;
+    text-shadow: 1px 1px 2px #000;
 }
