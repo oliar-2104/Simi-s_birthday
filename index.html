@@ -3,51 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Surprise for Simi!</title>
+    <title>My Simple Page</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="countdown-container" id="countdown-container">
-        <h1>A Birthday Surprise for Simi...</h1>
-        <div id="countdown" class="countdown"></div>
-    </div>
+    <header>
+        <div class="container">
+            <h1>My Blog</h1>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#blog-post">Blog</a>
+            </nav>
+        </div>
+    </header>
 
-    <div class="card-container" id="card-container">
-        <div class="photo-card" id="photo-card">
-            <div class="photo-wrapper">
-                <img src="49C90649-833C-4BD0-BE28-DBB6D7D584CA.jpg" alt="Simi" class="animated-photo">
-            </div>
-            <div class="message-box">
-                <p>Happy Birthday, Simi!</p>
-                <p class="personal-message">
-                    You're the closest to my heart and always cheer me up. Even though we haven't met,
-                    your friendship means the world to me. I hope you have an amazing day!
+    <main>
+        <section id="blog-post">
+            <div class="container">
+                <h2>The Joy of Simple Things</h2>
+                <p class="date">September 17, 2025</p>
+                <p>
+                    In our fast-paced world, it's easy to overlook the small moments that bring us happiness. A warm cup of tea on a rainy day, the sight of a clear night sky, or the simple act of a quiet morning walk—these are the small joys that ground us and add color to our lives. This blog is dedicated to celebrating those moments.
                 </p>
-                <p class="signature">- [Your Name]</p>
+                <p>
+                    I believe that a fulfilled life isn't about chasing grand gestures, but about finding meaning in the ordinary. By appreciating the world around us, we can find a sense of peace and wonder that often gets lost in the rush.
+                </p>
+                
+                <div class="interactive-section">
+                    <button id="like-button">👍 Like</button>
+                    <span id="like-counter">0</span> likes
+                </div>
             </div>
-        </div>
-        <div class="confetti-container"></div>
-    </div>
+        </section>
 
-    <div class="activities-container" id="activities-container">
-        <h2>Let's Celebrate with Some Fun!</h2>
-        
-        <div class="activity-box">
-            <h3>Friendship Quiz</h3>
-            <div id="quiz-question" class="quiz-question"></div>
-            <div id="quiz-options" class="quiz-options"></div>
-            <div id="quiz-result" class="quiz-result"></div>
-        </div>
+        <section id="about">
+            <div class="container">
+                <h2>About Me</h2>
+                <p>
+                    I am a curious mind who loves to explore the intersection of technology and art. My passion for coding is matched only by my desire to capture the beauty of the world through words. Welcome to my little corner of the internet.
+                </p>
+            </div>
+        </section>
+    </main>
 
-        <div class="activity-box">
-            <h3>Digital Postcard</h3>
-            <p>Write a message and see it on a virtual postcard!</p>
-            <textarea id="postcard-text" placeholder="Type your message here..."></textarea>
-            <button id="create-postcard">Create Postcard</button>
-            <div id="postcard-preview" class="postcard-preview"></div>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 All Rights Reserved.</p>
         </div>
-    </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
