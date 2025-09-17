@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const confettiContainer = document.querySelector('.confetti-container');
 
     // Set the birthday date to September 18, 2025
-    const birthdayDate = new Date('September 18, 2025 00:00:00').getTime();
+    const birthdayDate = new Date('September 17, 2025 00:00:00').getTime();
 
     function updateCountdown() {
         const now = new Date().getTime();
