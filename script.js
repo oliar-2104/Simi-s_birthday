@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const createPostcardBtn = document.getElementById('create-postcard');
     const postcardPreview = document.getElementById('postcard-preview');
 
-    const birthdayDate = new Date('September 18, 2025 00:00:00').getTime();
+    const birthdayDate = new Date('September 17, 2025 00:00:00').getTime();
 
     function updateCountdown() {
         const now = new Date().getTime();
