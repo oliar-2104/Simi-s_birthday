@@ -3,55 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Simple Page</title>
+    <title>A Special Surprise for Simi!</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <header>
-        <div class="container">
-            <h1>My Blog</h1>
-            <nav>
-                <a href="#about">About</a>
-                <a href="#blog-post">Blog</a>
-            </nav>
-        </div>
-    </header>
+    <div class="countdown-container" id="countdown-container">
+        <h1>A Birthday Surprise for Simi is Coming Soon!</h1>
+        <div id="countdown" class="countdown"></div>
+    </div>
 
-    <main>
-        <section id="blog-post">
-            <div class="container">
-                <h2>The Joy of Simple Things</h2>
-                <p class="date">September 17, 2025</p>
-                <p>
-                    In our fast-paced world, it's easy to overlook the small moments that bring us happiness. A warm cup of tea on a rainy day, the sight of a clear night sky, or the simple act of a quiet morning walk—these are the small joys that ground us and add color to our lives. This blog is dedicated to celebrating those moments.
-                </p>
-                <p>
-                    I believe that a fulfilled life isn't about chasing grand gestures, but about finding meaning in the ordinary. By appreciating the world around us, we can find a sense of peace and wonder that often gets lost in the rush.
-                </p>
-                
-                <div class="interactive-section">
-                    <button id="like-button">👍 Like</button>
-                    <span id="like-counter">0</span> likes
+    <div class="main-container" id="main-container">
+        <div class="confetti-container"></div>
+        <header>
+            <h1>Happy Birthday, Dear Simi!</h1>
+            <p>From your friend, with all my love.</p>
+        </header>
+
+        <div class="buttons-grid">
+            <button class="menu-button" data-section="message">
+                <span class="button-icon">💌</span>
+                <span class="button-text">Heart to Heart</span>
+            </button>
+            <button class="menu-button" data-section="cake">
+                <span class="button-icon">🎂</span>
+                <span class="button-text">Make a Wish</span>
+            </button>
+            <button class="menu-button" data-section="photo-gallery">
+                <span class="button-icon">📸</span>
+                <span class="button-text">Our Journey</span>
+            </button>
+            <button class="menu-button" data-section="postcard">
+                <span class="button-icon">✍️</span>
+                <span class="button-text">Write to Me</span>
+            </button>
+            <button class="menu-button" data-section="next-birthday">
+                <span class="button-icon">🗓️</span>
+                <span class="button-text">Next Birthday</span>
+            </button>
+            <button class="menu-button" data-section="music">
+                <span class="button-icon">🎶</span>
+                <span class="button-text">Music & Vibes</span>
+            </button>
+        </div>
+
+        <div class="section-content" id="message">
+            <div class="photo-card" id="photo-card">
+                <div class="photo-wrapper">
+                    <img src="49C90649-833C-4BD0-BE28-DBB6D7D584CA.jpg" alt="Simi" class="animated-photo">
+                </div>
+                <div class="message-box">
+                    <h2>Happy Birthday, Simi!</h2>
+                    <p class="personal-message">
+                        Happy birthday to the person who fills my life with so much joy. I hope your special day is as beautiful as you are. May your year be filled with adventures, laughter, and everything you've ever wished for.
+                    </p>
+                    <p class="signature">- [Your Name]</p>
                 </div>
             </div>
-        </section>
-
-        <section id="about">
-            <div class="container">
-                <h2>About Me</h2>
-                <p>
-                    I am a curious mind who loves to explore the intersection of technology and art. My passion for coding is matched only by my desire to capture the beauty of the world through words. Welcome to my little corner of the internet.
-                </p>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 All Rights Reserved.</p>
         </div>
-    </footer>
+
+        <div class="section-content hidden" id="cake">
+            <h2>Make a Wish!</h2>
+            <div class="cake-container">
+                <div class="cake">
+                    <div class="candle"></div>
+                    <div class="candle"></div>
+                    <div class="candle"></div>
+                    <div class="candle"></div>
+                    <div class="candle"></div>
+                </div>
+            </div>
+            <p class="wish-text" id="wish-text">Blow out all the candles to reveal your wish!</p>
+        </div>
+
+        <div class="section-content hidden" id="photo-gallery">
+            <h2>Our Journey</h2>
+            <div class="gallery-grid">
+                <img src="https://source.unsplash.com/random/400x400/?mountains,travel,nature,adventure" alt="Image of mountains" class="gallery-item">
+                <img src="https://source.unsplash.com/random/400x400/?beach,sunset,travel" alt="Image of beach at sunset" class="gallery-item">
+                <img src="https://source.unsplash.com/random/400x400/?cityscape,night" alt="Image of city at night" class="gallery-item">
+                <img src="https://source.unsplash.com/random/400x400/?forest,river,path" alt="Image of a forest path" class="gallery-item">
+            </div>
+        </div>
+
+        <div class="section-content hidden" id="postcard">
+            <h2>Write to Me</h2>
+            <p>Type a message below and it will appear on a beautiful digital postcard!</p>
+            <textarea id="postcard-text" placeholder="Type your message here..."></textarea>
+            <button id="create-postcard">Create Postcard</button>
+            <div id="postcard-preview"></div>
+        </div>
+
+        <div class="section-content hidden" id="next-birthday">
+            <h2>Countdown to the Next Adventure!</h2>
+            <p class="next-countdown"></p>
+        </div>
+
+        <div class="section-content hidden" id="music">
+            <h2>Music & Vibes</h2>
+            <p>A little something to make your day even brighter.</p>
+            </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
